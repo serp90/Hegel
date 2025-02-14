@@ -9,15 +9,15 @@ all: tom1 tom2 tom3
 allg: tom1g tom2g tom3g cleand
 
 tom1:
-	latexmk -pdflatex gegel1 | tail -n20
+	latexmk -synctex=1 -latexoption='-halt-on-error -enable-etex' -pdf -xelatex  gegel1 | tail -n20
 	echo -e \\a
 
 tom1g:
-	latexmk -pdflatex -output-directory=Drafts -jobname=hegel1_$(date)_$(branch)_$(tags) gegel1 | tail -n20
+	latexmk -c -pdflatex -output-directory=Drafts -jobname=hegel1_$(date)_$(branch)_$(tags) gegel1 | tail -n20
 	echo -e \\a
 
 tom1v:
-	latexmk -pdflatex gegel1
+	latexmk  -xelatex -g  gegel1
 
 tom2:
 	latexmk -pdflatex gegel2 | tail -n20
@@ -44,11 +44,11 @@ tom3v:
 .phony: clean cleanall cleand
 
 clean:
-	rm *.aux *.toc *.ent *.log *.fdb_latexmk *.fls *.gz
+	latexmk -c
 
 cleand:
 	rm $(drafts_dir)/*.aux $(drafts_dir)/*.toc $(drafts_dir)/*.ent $(drafts_dir)/*.log $(drafts_dir)/*.idx $(drafts_dir)/*-dirty.pdf
 
-cleanall: clean
-	rm *.pdf
+cleanall:
+	latexmk -C
 
