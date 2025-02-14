@@ -2,15 +2,42 @@
 
 %%% PACKAGES
 %%%------------------------------------------------------------------------
-\RequirePackage[utf8]{inputenc}
+%\RequirePackage[utf8]{inputenc}
 %\RequirePackage{concrete}
 %\RequirePackage{anttor}
 %\RequirePackage{libertine} %нет шрифта без засечек
 %\RequirePackage{erewhon} %нет греческих
 %\RequirePackage{paratype} %нет греческих
-\RequirePackage[T2A]{fontenc}
-\RequirePackage[greek,english,main=russian]{babel}
-\RequirePackage[final,letterspace=150]{microtype} % Less badboxes
+%\RequirePackage[T2A]{fontenc}
+%\RequirePackage[greek,english,main=russian]{babel}
+%%%-xelatex----------------------------------------------------------------
+\RequirePackage{polyglossia}
+\setdefaultlanguage[indentfirst=true,forceheadingpunctuation=false]{russian}
+\setotherlanguages{english,greek}
+
+\IfFontExistsTF{Times New Roman}
+{\setmainfont{Times New Roman}
+\newfontfamily\cyrillicfont{Times New Roman}[Script=Cyrillic]}
+{\setmainfont[Script=Cyrillic]{FreeSerif}}
+
+\IfFontExistsTF{Courier New}
+{\setmonofont{Courier New}
+\newfontfamily\cyrillicfonttt{Courier New}[Script=Cyrillic]
+}
+{\setmonofont[Script=Cyrillic]{FreeMono}}
+
+\IfFontExistsTF{Arial}
+{\setsansfont{Arial}
+\newfontfamily\cyrillicfontsf{Arial}[Script=Cyrillic]
+}
+{\setsansfont[Script=Cyrillic]{FreeSans}}
+
+%\RequirePackage[final,letterspace=150]{microtype} % Less badboxes
+% FIXME:
+\newcommand\lsstyle{}
+\newcommand\textls{}
+
+
 \RequirePackage{bookmark}
 \RequirePackage{footnotehyper}
 \RequirePackage{multicol}
@@ -493,6 +520,9 @@
 \or\texttau\or\textupsilon\or\textphi\or\textchi\or\textpsi\or\textomega%
 \else\@ctrerr\fi
 }
+% FIXME:
+\renewcommand*{\singlegreek}[1]{ }
+
 \newcommand*{\rufemOrdinal}[1]{%
 \ifcase #1\or{Первая}\or{Вторая}\or{Третья}\or{Четвёртая}\or{Пятая}\or{Шестая}%
 \or{Седьмая}\or{Восьмая}\or{Девятая}\or{Десятая}\else#1\fi%
