@@ -95,10 +95,13 @@
 
 \setsecnumdepth{subsection}
 \subsubsection{С~чего следует начинать науку}
+\let\rightmarkold\rightmark
+\renewcommand\rightmark{\memUChead{С~чего следует начинать науку}}
 \input{101_s_chego.tex}
 
 \setsecnumdepth{subsubsection}
 \chapter[Определённость (качество)]{Определённость\\(качество)}
+\renewcommand\rightmark\rightmarkold
 
 % Первая глава. Бытие.
 \input{111_bytie.tex}
