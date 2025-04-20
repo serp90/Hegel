@@ -1,4 +1,6 @@
 drafts_dir = Drafts
+releases_dir = Releases
+gitinfo_file = .git/gitHeadInfo.gin
 foo = $(shell git checkout)
 branch = $(shell git branch --show-current)
 tags = $(shell git describe --tags --long --always --dirty)
@@ -13,7 +15,12 @@ tom1:
 	echo -e \\a
 
 tom1g:
-	latexmk -pdflatex -output-directory=Drafts -jobname=hegel1_$(date)_$(branch)_$(tags) gegel1 | tail -n20
+	latexmk -pdflatex -output-directory=$(drafts_dir) -jobname=hegel1_$(date)_$(branch)_$(tags) gegel1 | tail -n20
+	echo -e \\a
+
+release_tom1:
+	rm $(gitinfo_file)
+	latexmk -pdflatex -output-directory=$(releases_dir) -jobname=hegel1_$(date)_$(branch)_$(tags) gegel1 | tail -n20
 	echo -e \\a
 
 tom1v:
@@ -24,7 +31,7 @@ tom2:
 	echo -e \\a
 
 tom2g:
-	latexmk -pdflatex -output-directory=Drafts -jobname=hegel2_$(date)_$(branch)_$(tags) gegel2 | tail -n20
+	latexmk -pdflatex -output-directory=$(drafts_dir) -jobname=hegel2_$(date)_$(branch)_$(tags) gegel2 | tail -n20
 	echo -e \\a
 
 tom2v:
@@ -35,7 +42,7 @@ tom3:
 	echo -e \\a
 
 tom3g:
-	latexmk -pdflatex -output-directory=Drafts -jobname=hegel3_$(date)_$(branch)_$(tags) gegel3 | tail -n20
+	latexmk -pdflatex -output-directory=$(drafts_dir) -jobname=hegel3_$(date)_$(branch)_$(tags) gegel3 | tail -n20
 	echo -e \\a
 
 tom3v:
