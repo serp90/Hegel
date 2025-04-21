@@ -64,6 +64,10 @@
 \makeevenhead{empty}{\printfaddingleft}{}{}
 \makeoddfoot{empty}{}{}{}
 \makeevenfoot{empty}{}{}{}
+
+\copypagestyle{bookoutput}{empty}
+\makeevenfoot{bookoutput}{}{\color[HTML]{60657b}\sffamily\large
+Создано в Омске и других городах}{}% FIXME: Перенести текст в файлы для текста
 % Отметка о версии черновика на каждой странице
 % Чтобы работало надо в своей локальной копии по инструкции
 % https://www.ctan.org/pkg/gitinfo2 создать небходимые файлы в папке
