@@ -97,7 +97,7 @@
 % executable.
 %\ifnumequal{\value{draft}}{1}{% Черновик
    \IfFileExists{.git/gitHeadInfo.gin}{
-      \RequirePackage[mark,pcount,raisemark=1mm]{gitinfo2}
+      \RequirePackage[pcount,raisemark=1mm]{gitinfo2}
       \renewcommand{\gitMark}{rev.\gitAbbrevHash\ \gitDirty\quad branch: \gitBranch\quad tags: \gitTags\quad\gitCommitterIsoDate}
    }{}
 %}{}

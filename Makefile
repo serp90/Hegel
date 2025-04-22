@@ -19,7 +19,7 @@ tom1g:
 	echo -e \\a
 
 release_tom1:
-	rm $(gitinfo_file)
+	#rm $(gitinfo_file)
 	latexmk -pdflatex -output-directory=$(releases_dir) -jobname=hegel1_$(date)_$(branch)_$(tags) gegel1 | tail -n20
 	echo -e \\a
 
